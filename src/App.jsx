@@ -21,6 +21,13 @@ function App() {
       : setListTarea([...listTarea, tarea]);
   }
 
+  //Actualizar Tarea
+  const Update=(tarea, i)=>{
+    const newList = [...listTarea]
+    newList[i] = tarea
+    setListTarea(newList)
+  }
+
   //esto es para que cuando refresques la pag, no se borre el storage
   useEffect(() => {
     const lista = JSON.parse(localStorage.getItem("tareas"));
@@ -39,7 +46,7 @@ function App() {
       <h1 className="text-center text-white mt-10 text-[30px]">Lista de Tareas</h1>
       <div className="App mx-auto mt-10 w-[500px] max-[600px]:w-[95%] text-white">
         <Formulario addList={addList} />
-        <Contenido listTarea={listTarea} eliminar={eliminar} />
+        <Contenido listTarea={listTarea} eliminar={eliminar} Update={Update} />
       </div>
     </>
   );
